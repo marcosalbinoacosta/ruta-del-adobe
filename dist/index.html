@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f4f0e6">
 <title>Ruta del Adobe · Expedición</title>
-<meta name="description" content="Una expedición interactiva por la Ruta del Adobe, Catamarca. Volá en un avión de papel por siete lugares de adobe, resolvé los desafíos y completá tu pasaporte.">
+<meta name="description" content="Una expedición interactiva por la Ruta del Adobe, Catamarca. Volá en un avión de papel por siete lugares de adobe y conocé su historia.">
 <meta property="og:title" content="Ruta del Adobe · Una expedición por Catamarca">
 <meta property="og:description" content="Volá en un avión de papel por siete lugares de adobe entre Tinogasta y Fiambalá.">
 <meta property="og:image" content="assets/san-pedro.webp">
@@ -77,13 +77,12 @@
       <span class="tape tape-olive brand-big">ADOBE</span>
     </button>
     <div class="hud-stats">
-      <div class="stat" title="Adobes recolectados en vuelo"><svg viewBox="0 0 32 22" aria-hidden="true"><rect x="2" y="3" width="28" height="16" rx="2" fill="#c8701e" stroke="#2f2c28" stroke-width="2"/><path d="M2 11h28M12 3v8M20 11v8" stroke="#2f2c28" stroke-width="1.6"/></svg><span class="stat-num"><b id="adobe-count">0</b>/<span id="adobe-total">21</span></span><small>adobes</small></div>
       <div class="stat stat-km" title="Kilómetros recorridos"><span class="stat-num"><b id="km">00</b>/55</span><small>km</small></div>
     </div>
     <div class="hud-actions">
       <button class="round-btn" id="sound" aria-label="Activar sonido" aria-pressed="false"><span class="ico-sound" aria-hidden="true"></span></button>
-      <button class="round-btn" id="menu-guide" aria-label="Prepará tu viaje real">i</button>
-      <button class="passport-btn" id="passport-open"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg><span class="pp-label">Pasaporte</span> <b id="stamp-count">0/7</b></button>
+      <button class="round-btn" id="menu-about" aria-label="Sobre el proyecto">i</button>
+      <button class="passport-btn" id="plan-open">Prepará tu viaje</button>
     </div>
   </header>
 
@@ -93,7 +92,6 @@
       <span class="clip" aria-hidden="true"></span>
       <img id="card-photo" src="assets/orquera.webp" alt="">
       <figcaption id="card-caption">TINOGASTA</figcaption>
-      <span class="mini-stamp" id="card-stamp" hidden>✓ SELLADO</span>
     </figure>
     <div class="note">
       <span class="tape tape-ochre" id="card-tag">PUNTO DE PARTIDA</span>
@@ -138,10 +136,9 @@
       <span class="tape tape-olive cover-big">ADOBE</span>
     </h1>
     <p class="cover-sub type">Una expedición interactiva por Catamarca</p>
-    <p class="cover-copy">Siete lugares de adobe. 55 kilómetros entre Tinogasta y Fiambalá. Un avión de papel. Visitá cada parada, superá su desafío y completá tu pasaporte.</p>
+    <p class="cover-copy">Siete lugares de adobe. 55 kilómetros entre Tinogasta y Fiambalá. Un avión de papel. Descubrí la historia de cada lugar y prepará tu viaje real.</p>
     <div class="cover-actions">
       <button class="btn btn-primary btn-big" id="start">▶&nbsp; Comenzar la expedición</button>
-      <button class="btn btn-ghost" id="continue-game" hidden>Continuar</button>
     </div>
     <label class="sound-choice"><input type="checkbox" id="start-sound" checked> Jugar con sonido</label>
     <p class="press type blink" aria-hidden="true">— presioná ENTER —</p>
@@ -182,7 +179,6 @@
         </div>
         <figcaption id="place-caption">ORATORIO DE LOS ORQUERA</figcaption>
       </figure>
-      <div class="stamp-zone" id="stamp-zone" aria-live="polite"></div>
      </div>
     </div>
     <div class="spread-right">
@@ -194,12 +190,6 @@
         <div><span class="type">DETALLE</span><p id="place-detail"></p></div>
         <div><span class="type">PARA TU VISITA</span><p id="place-tip"></p></div>
       </div>
-      <section class="quiz" id="quiz" aria-labelledby="quiz-q">
-        <p class="quiz-head type"><span>★ DESAFÍO</span><span id="quiz-state">Respondé para ganar el sello</span></p>
-        <p class="quiz-q" id="quiz-q"></p>
-        <div class="quiz-options" id="quiz-options"></div>
-        <p class="quiz-feedback" id="quiz-feedback" aria-live="assertive"></p>
-      </section>
       <div class="page-actions">
         <a class="btn btn-ghost" id="place-map" target="_blank" rel="noopener">Ver ubicación real ↗</a>
         <button class="btn btn-primary" id="continue">Seguir volando →</button>
@@ -208,24 +198,6 @@
   </div>
 </dialog>
 
-<!-- ============ PASAPORTE ============ -->
-<dialog class="page-dialog paper-dialog" id="passport-dialog" aria-labelledby="passport-title">
-  <button class="close" data-close aria-label="Cerrar">×</button>
-  <h2 class="tape tape-olive" id="passport-title">Mi pasaporte</h2>
-  <p class="type passport-sub">RUTA DEL ADOBE · TINOGASTA → FIAMBALÁ</p>
-  <div class="passport-stats">
-    <div><b id="pp-stamps">0</b><span>de 7 sellos</span></div>
-    <div><b id="pp-adobes">0</b><span>de 21 adobes</span></div>
-    <div><b id="pp-rank">Turista</b><span>rango de viajero</span></div>
-  </div>
-  <div class="stamp-grid" id="stamp-grid"></div>
-  <p class="passport-status" id="passport-status"></p>
-  <div class="page-actions">
-    <button class="btn btn-ghost" id="print">Imprimir mi pasaporte</button>
-    <button class="btn btn-primary" id="passport-guide">Del viaje virtual al real →</button>
-  </div>
-  <button class="text-btn" id="reset">Reiniciar expedición</button>
-</dialog>
 
 <!-- ============ GUÍA REAL (contenido del PDF) ============ -->
 <dialog class="page-dialog paper-dialog" id="guide-dialog" aria-labelledby="guide-title">
@@ -292,29 +264,14 @@
     <span>Turismo cultural</span><span>Turismo histórico y patrimonial</span><span>Estudiantes y grupos educativos</span><span>Familias</span><span>Viajeros que buscan experiencias diferentes</span>
   </div>
   <p>La ruta permite excursiones de medio día o día completo, combinadas con otros atractivos de Fiambalá y Tinogasta, e incorporar a prestadores y comunidades locales mediante <b>guiado, gastronomía regional, artesanías</b> y actividades vinculadas con la cultura local.</p>
-  <h3 class="tape tape-ochre">Cómo jugar</h3>
+  <h3 class="tape tape-ochre">Cómo recorrer</h3>
   <ul class="dots">
     <li>Hacé scroll, deslizá o usá las flechas para volar. La <b>barra espaciadora</b> activa el modo película.</li>
-    <li>Atravesá los adobes que flotan sobre la ruta para juntarlos.</li>
-    <li>En cada parada, explorá el lugar y respondé el desafío para ganar su sello.</li>
+    <li>En cada parada, tocá <b>Conocer el lugar</b> para leer su historia, ubicación y consejos de visita.</li>
   </ul>
   <p class="small">El mapa y el avión son recursos ilustrados e interpretativos: no son cartografía de navegación. El recorrido real se hace por tierra. Fotografías: presentación original del proyecto.</p>
 </dialog>
 
-<!-- ============ FINAL ============ -->
-<section class="ending" id="ending" hidden aria-labelledby="ending-title">
-  <div class="ending-inner">
-    <p class="type">— FIN DE LA EXPEDICIÓN —</p>
-    <h2 id="ending-title"><span class="tape tape-olive">¡Pasaporte completo!</span></h2>
-    <p class="ending-copy">Recorriste los 55 km de la Ruta del Adobe y te llevás siete historias del valle. Ahora te espera el camino real.</p>
-    <div class="ending-stamps" id="ending-stamps"></div>
-    <p class="ending-stats type" id="ending-stats"></p>
-    <div class="cover-actions">
-      <button class="btn btn-primary btn-big" id="ending-guide">Planear mi viaje real →</button>
-      <button class="btn btn-ghost" id="ending-replay">Volver a volar</button>
-    </div>
-  </div>
-</section>
 
 <div id="toast" role="status"></div>
 <nav class="foot-links" aria-label="Más información"><button id="about-open">Sobre el proyecto</button><button id="guide-open">Prepará tu viaje</button></nav>

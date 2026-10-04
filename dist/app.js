@@ -16,63 +16,56 @@ const PTS = PTS0.map(([x,y]) => [x + OX, y + OY]);
 
 /* ---------- Contenido (basado en la presentación) ---------- */
 const stops = [
- {name:'Tinogasta', short:'Tinogasta', pt:0, image:'world', caption:'VALLE DE ABAUCÁN', tag:'PUNTO DE PARTIDA', town:'Tinogasta, Catamarca', title:'El viaje empieza acá', desc:'Seguí la línea punteada hacia Fiambalá. Atravesá los adobes que flotan en el aire y ganá un sello en cada parada.'},
+ {name:'Tinogasta', short:'Tinogasta', pt:0, image:'world', caption:'VALLE DE ABAUCÁN', tag:'PUNTO DE PARTIDA', town:'Tinogasta, Catamarca', title:'El viaje empieza acá', desc:'Seguí la línea punteada hacia Fiambalá. Siete lugares de adobe te esperan a lo largo de la Ruta Nacional 60.'},
  {name:'Oratorio de los Orquera', short:'Orquera', pt:3, image:'orquera', town:'El Puesto', icon:'chapel',
   desc:'Bajo los árboles de El Puesto, una pequeña capilla conserva la memoria de una familia y de todo un pueblo.',
   loc:'El Puesto, departamento Tinogasta, Catamarca. Se encuentra dentro del recorrido de la Ruta del Adobe, sobre el corredor de la Ruta Nacional 60.',
   story:'En El Puesto, el Oratorio de los Orquera reúne la escala íntima de una capilla familiar y la historia de la comunidad. Sus muros de tierra y su estructura de madera permiten acercarse a las técnicas constructivas tradicionales del valle. Una parada para detenerse, observar y escuchar a quienes cuidan este patrimonio.',
   detail:'Mirá cómo la tierra y la madera conviven en la construcción. El adobe se moldea con tierra, agua y fibras naturales, y se seca al sol.',
   tip:'Consultá la apertura antes de ir. Pedí autorización para fotografiar el interior.',
-  query:'Oratorio de los Orquera El Puesto Catamarca',
-  quiz:{q:'El adobe es el gran protagonista de esta ruta. ¿Cómo se seca cada bloque?', o:['En un horno de leña','Al sol','Con fuego de algarrobo'], a:1, ok:'¡Exacto! Tierra, agua y fibras naturales, moldeadas y secadas al sol.'}},
+  query:'Oratorio de los Orquera El Puesto Catamarca'},
  {name:'Iglesia Nuestra Señora de Andacollo', short:'Andacollo', pt:6, image:'andacollo', town:'La Falda', icon:'towers',
   desc:'Dos torres, una fachada de adobe y las montañas como telón de fondo. Una presencia imposible de ignorar.',
   loc:'La Falda, departamento Tinogasta, Catamarca. Se encuentra a la vera de la Ruta Nacional 60.',
   story:'En La Falda, la Iglesia Nuestra Señora de Andacollo es reconocida por sus características constructivas tradicionales. Su fachada con dos torres adapta las formas arquitectónicas al material del lugar: la tierra es estructura y también expresión.',
   detail:'Buscá las dos torres y las pilastras de la fachada: el lenguaje arquitectónico se interpreta con adobe.',
   tip:'Respetá los espacios de culto. Los accesos pueden incluir superficies irregulares.',
-  query:'Iglesia Nuestra Señora de Andacollo La Falda Catamarca',
-  quiz:{q:'¿Qué distingue a la fachada de Nuestra Señora de Andacollo?', o:['Una cúpula de vidrio','Dos torres de adobe','Un campanario de piedra'], a:1, ok:'¡Muy bien! Sus dos torres la vuelven inconfundible a la vera de la RN 60.'}},
+  query:'Iglesia Nuestra Señora de Andacollo La Falda Catamarca'},
  {name:'Mayorazgo de Anillaco', short:'Mayorazgo', pt:9, image:'mayorazgo', town:'Anillaco', icon:'house',
   desc:'Una antigua residencia revela otra manera de habitar y organizar la vida en el valle.',
   loc:'Anillaco, departamento Tinogasta, Catamarca. Es uno de los principales conjuntos históricos de la Ruta del Adobe.',
   story:'El Mayorazgo de Anillaco y su capilla son considerados uno de los conjuntos históricos más importantes de la zona. Su arquitectura permite conocer una dimensión residencial y productiva del pasado colonial, más allá de los espacios religiosos. Recorrerlo con guía ayuda a interpretar las construcciones y su relación con el territorio.',
   detail:'El mayorazgo estaba vinculado a la organización de la propiedad y la herencia en la época colonial.',
   tip:'Combiná la visita con la Capilla del Rosario, en el mismo conjunto. Consultá las áreas habilitadas.',
-  query:'Mayorazgo de Anillaco Catamarca',
-  quiz:{q:'Además de lo religioso, ¿qué nos muestra el Mayorazgo de Anillaco?', o:['La vida residencial y productiva de la época colonial','Una antigua estación de tren','Un fuerte de frontera'], a:0, ok:'¡Correcto! Es uno de los principales conjuntos históricos de la ruta.'}},
+  query:'Mayorazgo de Anillaco Catamarca'},
  {name:'Capilla Nuestra Señora del Rosario', short:'El Rosario', pt:11, image:'rosario', town:'Anillaco', icon:'bell',
   desc:'La sencillez del exterior guarda un patrimonio religioso y artesanal de enorme valor.',
   loc:'Anillaco, departamento Tinogasta, Catamarca. Se encuentra junto al conjunto histórico del Mayorazgo de Anillaco.',
   story:'La Capilla Nuestra Señora del Rosario integra el conjunto patrimonial de Anillaco. Su interior invita a prestar atención a los materiales, las imágenes religiosas y las soluciones artesanales. Junto al Mayorazgo, permite comprender la vida colonial en esta zona de Catamarca.',
   detail:'La capilla se fecha en 1712. Su altar de barro es uno de los detalles que distingue esta visita.',
   tip:'El acceso depende de la apertura del sitio. No toques altares, imágenes ni superficies históricas.',
-  query:'Capilla Nuestra Señora del Rosario Anillaco Catamarca',
-  quiz:{q:'¿Junto a qué conjunto histórico se encuentra la Capilla del Rosario?', o:['La Comandancia de Armas','El Mayorazgo de Anillaco','Las Ruinas de Batungasta'], a:1, ok:'¡Sí! Capilla y Mayorazgo forman el conjunto de Anillaco.'}},
+  query:'Capilla Nuestra Señora del Rosario Anillaco Catamarca'},
  {name:'Ruinas de Batungasta', short:'Batungasta', pt:14, image:'watungasta', town:'Zona de Anillaco', icon:'ruins',
   desc:'El viaje retrocede aún más: vestigios de un poblado prehispánico en medio del paisaje.',
   loc:'Zona de Anillaco, departamento Tinogasta, Catamarca. Se encuentran en las cercanías del recorrido y constituyen un importante sitio arqueológico de la región.',
   story:'Las Ruinas de Batungasta (también llamadas Watungasta) permiten reconocer la profundidad de la historia del valle, anterior a las construcciones coloniales. Vinculadas al patrimonio prehispánico y al antiguo Qhapaq Ñan, son parte esencial de la Ruta del Adobe. Sus vestigios requieren una visita especialmente cuidadosa.',
   detail:'Batungasta y Watungasta son dos nombres utilizados para el mismo sitio arqueológico.',
   tip:'Seguí únicamente los sectores habilitados. No camines sobre estructuras ni retires fragmentos. Priorizá una visita guiada.',
-  query:'Ruinas de Batungasta Catamarca',
-  quiz:{q:'Las Ruinas de Batungasta están vinculadas a un antiguo camino. ¿Cuál?', o:['El Camino Real colonial','La Ruta Nacional 40','El Qhapaq Ñan, el camino inca'], a:2, ok:'¡Exacto! Patrimonio prehispánico ligado al Qhapaq Ñan.'}},
+  query:'Ruinas de Batungasta Catamarca'},
  {name:'Iglesia de San Pedro', short:'San Pedro', pt:19, image:'san-pedro', town:'Fiambalá', icon:'church',
   desc:'Muros claros, madera de algarrobo y una silueta que pertenece al paisaje desde el siglo XVIII.',
   loc:'Fiambalá, departamento Tinogasta, Catamarca. Es uno de los principales edificios históricos del recorrido y se encuentra en el centro de la localidad.',
   story:'La Iglesia de San Pedro de Fiambalá fue construida en el siglo XVIII y tiene un gran valor arquitectónico y religioso. Su arquitectura colonial conserva una fuerte relación con los materiales del valle: adobe, madera y cañas. Fue declarada Monumento Histórico Nacional y forma un conjunto con la Comandancia de Armas.',
   detail:'El campanario tiene un remate a cuatro aguas. En el interior se conservan pinturas de la escuela cuzqueña.',
   tip:'Confirmá horarios y condiciones de visita con Turismo de Fiambalá.',
-  query:'Iglesia de San Pedro Fiambala Catamarca',
-  quiz:{q:'¿En qué siglo se construyó la Iglesia de San Pedro de Fiambalá?', o:['Siglo XVIII','Siglo XX','Siglo XVI'], a:0, ok:'¡Correcto! Siglo XVIII: uno de los edificios de mayor valor del recorrido.'}},
+  query:'Iglesia de San Pedro Fiambala Catamarca'},
  {name:'Comandancia de Armas', short:'Comandancia', pt:21, image:'comandancia', town:'Fiambalá', icon:'fort',
   desc:'El último capítulo: un antiguo edificio de importancia histórica para Fiambalá.',
   loc:'Fiambalá, departamento Tinogasta, Catamarca. Forma parte del conjunto histórico relacionado con la Iglesia de San Pedro.',
   story:'La Comandancia de Armas de Fiambalá es un antiguo edificio de importancia histórica para la localidad. Completa el conjunto de San Pedro y amplía la mirada hacia los usos civiles y administrativos del patrimonio. Aquí termina el recorrido propuesto, pero el valle tiene muchas otras historias para descubrir.',
   detail:'La Comandancia y la Iglesia de San Pedro pueden conocerse como parte de una misma parada en Fiambalá.',
   tip:'Si tenés otro día, consultá por otros atractivos de Fiambalá. Cada excursión tiene sus propios accesos y condiciones.',
-  query:'Comandancia de Armas Fiambala Catamarca',
-  quiz:{q:'La Comandancia de Armas forma un conjunto histórico junto a…', o:['La Iglesia de San Pedro','El Oratorio de los Orquera','La Iglesia de Andacollo'], a:0, ok:'¡Muy bien! Comandancia e iglesia se recorren juntas en Fiambalá.'}}
+  query:'Comandancia de Armas Fiambala Catamarca'},
 ];
 const LAST = stops.length - 1;
 const plans = {
@@ -91,16 +84,11 @@ const ICONS = {
 };
 const INKS = ['#a3570f','#66753a','#2f6a9a','#9b3b2a','#a3570f','#66753a','#2f6a9a'];
 
-/* ---------- Estado guardado ---------- */
-const store = {
- read(){ try { return JSON.parse(localStorage.getItem('adobe-v3')) || {}; } catch { return {}; } },
- write(){ try { localStorage.setItem('adobe-v3', JSON.stringify({stamps:save.stamps, adobes:[...gotAdobes], checks:save.checks})); return true; } catch { return false; } }
-};
-const save = Object.assign({stamps:{}, adobes:[], checks:[]}, store.read());
-if (typeof save.stamps !== 'object' || Array.isArray(save.stamps)) save.stamps = {};
-const gotAdobes = new Set(Array.isArray(save.adobes) ? save.adobes : []);
-const stamped = i => Object.hasOwn(save.stamps, i);
-const stampCount = () => Object.keys(save.stamps).length;
+
+/* ---------- Estado guardado (solo la checklist) ---------- */
+const save = {checks:[]};
+try { const c = JSON.parse(localStorage.getItem('adobe-checks')); if (Array.isArray(c)) save.checks = c; } catch {}
+const store = {write(){ try { localStorage.setItem('adobe-checks', JSON.stringify(save.checks)); } catch {} }};
 
 /* ---------- Utilidades SVG ---------- */
 function el(tag, attrs, parent){ const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
@@ -267,9 +255,6 @@ function buildPins(){
   const nb = el('g',{transform:'translate(36 -122)'},body);
   el('circle',{r:17,fill:'#c8701e',stroke:'#2f2c28','stroke-width':3},nb);
   const nt = el('text',{y:7,'text-anchor':'middle','font-size':20,'font-family':'Special Elite, monospace',fill:'#fff'},nb); nt.textContent = i;
-  const ck = el('g',{class:'pin-check',transform:'translate(-36 -122)'},body);
-  el('circle',{r:17,fill:'#66753a',stroke:'#2f2c28','stroke-width':3},ck);
-  el('path',{d:'M-7 0l5 5 9-10',fill:'none',stroke:'#fff','stroke-width':4,'stroke-linecap':'round','stroke-linejoin':'round'},ck);
   const w = s.short.length * 14 + 30;
   const lg = el('g',{class:'pin-label',transform:'translate(0 14) rotate(-2)'},g);
   el('rect',{x:-w/2,y:0,width:w,height:36},lg);
@@ -278,37 +263,6 @@ function buildPins(){
  });
  pins.forEach((p, i) => p.addEventListener('click', () => { if (state !== 'play') return; if (arrived === i && i > 0) openPlace(i); else flyTo(i); }));
 }
-
-/* ---------- Adobes coleccionables ---------- */
-const adobes = [];
-function buildAdobes(){
- const layer = $('layer-adobes');
- let id = 0;
- for (let s = 0; s < LAST; s++) for (const f of [.27,.5,.73]){
-  const t = lerp(stops[s].t, stops[s+1].t, f), p = route.getPointAtLength(t * total);
-  const g = el('g',{class:'adobe',transform:`translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`},layer);
-  el('circle',{class:'halo',r:34,fill:'url(#glow)'},g);
-  const b = el('g',{class:'brick'},g);
-  el('rect',{x:-19,y:-12,width:38,height:24,rx:3,fill:'#c8701e',stroke:'#2f2c28','stroke-width':3.5},b);
-  el('path',{d:'M-19 0h38M-6-12v12M7 0v12',stroke:'#2f2c28','stroke-width':2.5},b);
-  const a = {id, t, g, x:p.x, y:p.y, got:gotAdobes.has(id)};
-  if (a.got) g.classList.add('got');
-  adobes.push(a); id++;
- }
- $('adobe-total').textContent = adobes.length;
-}
-
-/* ---------- Sellos de tinta ---------- */
-function stampSVG(i, date){
- const s = stops[i], ink = INKS[i - 1], id = `sp${i}-${Math.random().toString(36).slice(2,7)}`;
- return `<svg class="stamp-svg" viewBox="-64 -64 128 128" role="img" aria-label="Sello ${s.name}"><g filter="url(#ink-rough)" fill="none" stroke="${ink}" color="${ink}">
- <circle r="60" stroke-width="4"/><circle r="53" stroke-width="1.5"/><circle r="33" stroke-width="1.5"/>
- <path id="${id}" d="M-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/>
- <text font-family="Special Elite, monospace" font-size="11.5" fill="${ink}" stroke="none" letter-spacing="1"><textPath href="#${id}" textLength="262" lengthAdjust="spacingAndGlyphs">RUTA DEL ADOBE ✦ ${s.short.toUpperCase()} ✦ Nº 0${i} ✦</textPath></text>
- <g transform="translate(0 -4) scale(.95)" stroke-width="2.6" stroke-linejoin="round"><path d="${ICONS[s.icon]}"/></g>
- <text y="26" text-anchor="middle" font-family="Special Elite, monospace" font-size="8" fill="${ink}" stroke="none">${date || ''}</text></g></svg>`;
-}
-document.body.insertAdjacentHTML('beforeend', `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="ink-rough"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.5 1.55" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in"/></filter></svg>`);
 
 /* ---------- Sonido (sintetizado, sin archivos) ---------- */
 const audio = {
@@ -364,7 +318,7 @@ let p = 0, target = 0, tween = null, prevP = 0;
 let zoom = 1, baseZoom = 1, camX = 0, camY = 0;
 let introCam = null;                // {x,y,z} cámara cinematográfica
 let arrived = 0, film = false, filmTimer = 0, angle = 0, angleTarget = 0, dir = 1, lastTime = 0, idleTimer = 0, hintTimer = 0;
-let pendingEnding = false, dialogIndex = 1;
+let dialogIndex = 1;
 
 function computeBase(){
  vw = innerWidth; vh = innerHeight; mobile = vw <= 720;
@@ -454,8 +408,6 @@ function frame(time){
   $('itin-fill').style.width = p * 100 + '%';
   $('itin-plane').style.left = p * 100 + '%';
   $('km').textContent = String(Math.round(p * 55)).padStart(2, '0');
-  // adobes
-  for (const ad of adobes) if (!ad.got && ((prevP < ad.t && p >= ad.t) || (prevP > ad.t && p <= ad.t))) collectAdobe(ad, sx, sy);
   // llegada
   const isArrived = dn < .006 && Math.abs(target - p) < .003 && !tween;
   const now = isArrived ? nearest : -1;
@@ -498,20 +450,11 @@ function setArrived(i){
  $('card-place').textContent = i ? `${s.town}, Catamarca` : s.town;
  $('card-title').textContent = i ? s.name : s.title;
  $('card-text').textContent = s.desc;
- $('card-stamp').hidden = !stamped(i);
- $('visit').innerHTML = i === 0 ? 'Despegar <span aria-hidden="true">→</span>' : stamped(i) ? 'Volver a explorar <span aria-hidden="true">✦</span>' : 'Explorar y ganar el sello <span aria-hidden="true">✦</span>';
+ $('visit').innerHTML = i === 0 ? 'Despegar <span aria-hidden="true">→</span>' : 'Conocer el lugar <span aria-hidden="true">✦</span>';
  const card = $('stop-card'); card.classList.remove('show'); void card.offsetWidth; card.classList.add('show');
  if (i > 0) audio.chime();
 }
 
-function collectAdobe(ad, sx, sy){
- ad.got = true; gotAdobes.add(ad.id); ad.g.classList.add('got'); store.write();
- $('adobe-count').textContent = gotAdobes.size;
- const st = $('adobe-count').closest('.stat'); st.classList.remove('bump'); void st.offsetWidth; st.classList.add('bump');
- floatText('+1 adobe', sx, sy - 50);
- audio.blip();
- if (gotAdobes.size === adobes.length) setTimeout(() => toast('¡Juntaste todos los adobes del valle! 🧱'), 600);
-}
 function floatText(txt, x, y){
  const f = document.createElement('div'); f.className = 'float'; f.textContent = txt; f.style.left = x + 'px'; f.style.top = y + 'px';
  $('float-layer').appendChild(f); setTimeout(() => f.remove(), 1200);
@@ -529,7 +472,7 @@ function setFilm(on){
 function filmStep(){
  if (!film) return;
  const i = nextIndex();
- if (target >= .999){ setFilm(false); if (stampCount() < 7) toast(`Llegaste a Fiambalá. Te faltan ${7 - stampCount()} sellos: entrá a las paradas para ganarlos.`); return; }
+ if (target >= .999){ setFilm(false); toast('Llegaste a Fiambalá: fin del recorrido. ¿Preparás tu viaje real?'); return; }
  flyTo(i, () => {
   if (!film) return;
   const bar = $('film-bar'); bar.style.transition = 'none'; bar.style.width = '0'; void bar.offsetWidth;
@@ -553,91 +496,23 @@ function openPlace(i){
  $('place-tip').textContent = s.tip;
  $('hotspot-note').textContent = s.detail; $('hotspot-note').hidden = true; $('hotspot').setAttribute('aria-expanded','false');
  $('place-map').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.query)}`;
- $('continue').textContent = i < LAST ? `Seguir volando a ${stops[i+1].short} →` : 'Terminar la expedición →';
- renderQuiz(i);
- renderStampZone(i, false);
+ $('continue').textContent = i < LAST ? `Seguir volando a ${stops[i+1].short} →` : 'Prepará tu viaje real →';
  openDialog('place-dialog');
 }
-function renderQuiz(i){
- const q = stops[i].quiz, box = $('quiz-options'), done = stamped(i);
- $('quiz-q').textContent = q.q; box.replaceChildren();
- $('quiz').classList.toggle('done', done);
- $('quiz-state').textContent = done ? '✓ Sello conseguido' : 'Respondé para ganar el sello';
- $('quiz-feedback').textContent = done ? q.ok : '';
- q.o.forEach((txt, k) => {
-  const b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
-  if (done){ b.disabled = true; if (k === q.a) b.classList.add('right'); }
-  b.addEventListener('click', () => answer(i, k, b));
-  box.appendChild(b);
- });
-}
-function answer(i, k, btn){
- const q = stops[i].quiz;
- if (k !== q.a){ btn.classList.add('wrong'); btn.disabled = true; $('quiz-feedback').textContent = 'Casi… Releé la historia del lugar y probá otra vez.'; audio.wrong(); return; }
- btn.classList.add('right');
- $('quiz-options').querySelectorAll('button').forEach(b => b.disabled = true);
- $('quiz-feedback').textContent = q.ok; $('quiz').classList.add('done'); $('quiz-state').textContent = '✓ Sello conseguido';
- save.stamps[i] = new Date().toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'numeric'}).replace(/\//g, '·');
- store.write();
- renderStampZone(i, true);
- setTimeout(() => { const d = $('place-dialog'); d.classList.remove('shake'); void d.offsetWidth; d.classList.add('shake'); audio.stamp(); }, 300);
- updateProgressUI();
- const pb = $('passport-open'); pb.classList.remove('bump'); void pb.offsetWidth; pb.classList.add('bump');
- if (stampCount() === 7) pendingEnding = true;
-}
-function renderStampZone(i, slam){
- const z = $('stamp-zone');
- if (stamped(i)){ z.innerHTML = stampSVG(i, save.stamps[i]); const svg = z.firstElementChild; svg.style.transform = 'rotate(-8deg)'; if (slam) svg.classList.add('slam'); }
- else z.innerHTML = '<div class="stamp-empty">Tu sello te espera.<br>Superá el desafío ★</div>';
-}
-
-/* ---------- Pasaporte ---------- */
-function rank(n){ return n >= 7 ? 'Leyenda del adobe' : n >= 5 ? 'Guía en formación' : n >= 3 ? 'Caminante' : 'Turista'; }
-function updateProgressUI(){
- const n = stampCount();
- $('stamp-count').textContent = `${n}/7`;
- $('adobe-count').textContent = gotAdobes.size;
- pins.forEach((pin, i) => pin.classList.toggle('stamped', stamped(i)));
- document.querySelectorAll('.itin-stop').forEach((b, i) => b.classList.toggle('stamped', stamped(i)));
- if (arrived > 0){ $('card-stamp').hidden = !stamped(arrived); }
-}
-function renderPassport(){
- const n = stampCount();
- $('pp-stamps').textContent = n; $('pp-adobes').textContent = gotAdobes.size; $('pp-rank').textContent = rank(n);
- $('pp-adobes').nextElementSibling.textContent = `de ${adobes.length} adobes`;
- const grid = $('stamp-grid'); grid.replaceChildren();
- for (let i = 1; i <= LAST; i++){
-  const b = document.createElement('button'); b.type = 'button';
-  if (stamped(i)){ b.className = 'stamp-slot'; b.innerHTML = stampSVG(i, save.stamps[i]); b.firstElementChild.style.transform = `rotate(${(i * 37 % 24) - 12}deg)`; b.setAttribute('aria-label', `${stops[i].name}: sello conseguido. Volar hasta allí`); }
-  else { b.className = 'stamp-slot empty'; b.innerHTML = `<span><b>${i}</b>${stops[i].short}</span>`; b.setAttribute('aria-label', `${stops[i].name}: sin sello. Volar hasta allí`); }
-  b.addEventListener('click', () => { closeAll(); flyTo(i); });
-  grid.appendChild(b);
- }
- $('passport-status').textContent = n === 7 ? '¡Expedición completa! Te llevás siete historias del valle.' : `${n} de 7 sellos. ${n ? 'El camino continúa…' : 'Tu aventura recién empieza.'}`;
-}
-
 /* ---------- Diálogos ---------- */
 function openDialog(id){ setFilm(false); const d = $(id); if (!d.open) d.showModal(); }
 function closeAll(){ document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
 document.querySelectorAll('dialog').forEach(d => {
  d.querySelector('[data-close]').addEventListener('click', () => d.close());
  d.addEventListener('click', e => { if (e.target !== d) return; const r = d.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) d.close(); });
- d.addEventListener('close', () => { if (pendingEnding && !document.querySelector('dialog[open]')){ pendingEnding = false; setTimeout(showEnding, 350); } });
 });
 
-function showEnding(){
- const box = $('ending-stamps'); box.innerHTML = '';
- for (let i = 1; i <= LAST; i++){ box.insertAdjacentHTML('beforeend', stampSVG(i, save.stamps[i])); const s = box.lastElementChild; s.style.transform = `rotate(${(i * 37 % 24) - 12}deg)`; s.classList.add('slam'); s.style.animationDelay = (i * .18) + 's'; }
- $('ending-stats').textContent = `7/7 sellos · ${gotAdobes.size}/${adobes.length} adobes · rango: ${rank(7)}`;
- $('ending').hidden = false; audio.fanfare();
- for (let i = 1; i <= LAST; i++) setTimeout(() => audio.stamp(), 300 + i * 180);
-}
 
 /* ---------- Entrada: rueda, arrastre, teclado ---------- */
 const game = $('game');
 function userMoved(){ setFilm(false); cancelTween(); clearTimeout(idleTimer); idleTimer = setTimeout(snap, 420); if (target > .015) hideHint(); }
 function snap(){ let best = -1, bd = .035; stops.forEach((s, i) => { const d = Math.abs(s.t - target); if (d < bd){ bd = d; best = i; } }); if (best >= 0) { tween = {from:p, to:stops[best].t, start:performance.now(), dur:reduceMotion ? 1 : 520}; } }
-function canPlay(){ return state === 'play' && !document.querySelector('dialog[open]') && $('ending').hidden; }
+function canPlay(){ return state === 'play' && !document.querySelector('dialog[open]'); }
 addEventListener('wheel', e => {
  if (!canPlay()) return;
  e.preventDefault();
@@ -676,27 +551,15 @@ $('play').addEventListener('click', () => { setFilm(!film); hideHint(); });
 $('home').addEventListener('click', () => { setFilm(false); flyTo(0); });
 $('continue').addEventListener('click', () => {
  const i = dialogIndex; $('place-dialog').close();
- if (pendingEnding) return; // el cierre dispara el final
  if (i < LAST) flyTo(i + 1);
- else if (stampCount() < 7){ toast(`Te faltan ${7 - stampCount()} sellos. Volvé a las paradas sin sellar.`); renderPassport(); openDialog('passport-dialog'); }
+ else openDialog('guide-dialog');
 });
 $('hotspot').addEventListener('click', () => { const show = $('hotspot-note').hidden; $('hotspot-note').hidden = !show; $('hotspot').setAttribute('aria-expanded', String(show)); });
-$('passport-open').addEventListener('click', () => { renderPassport(); openDialog('passport-dialog'); });
-$('passport-guide').addEventListener('click', () => { $('passport-dialog').close(); openDialog('guide-dialog'); });
-$('menu-guide').addEventListener('click', () => openDialog('guide-dialog'));
+$('plan-open').addEventListener('click', () => openDialog('guide-dialog'));
+$('menu-about').addEventListener('click', () => openDialog('about-dialog'));
 $('guide-open').addEventListener('click', () => openDialog('guide-dialog'));
 $('about-open').addEventListener('click', () => openDialog('about-dialog'));
-$('print').addEventListener('click', () => print());
 $('sound').addEventListener('click', () => audio.set(!audio.on));
-$('ending-guide').addEventListener('click', () => { $('ending').hidden = true; openDialog('guide-dialog'); });
-$('ending-replay').addEventListener('click', () => { $('ending').hidden = true; p = target = 0; flyTo(0); });
-let resetArmed = false, resetTimer = 0;
-$('reset').addEventListener('click', () => {
- if (!resetArmed){ resetArmed = true; $('reset').textContent = '¿Seguro? Tocá de nuevo para borrar sellos y adobes'; resetTimer = setTimeout(() => { resetArmed = false; $('reset').textContent = 'Reiniciar expedición'; }, 3500); return; }
- clearTimeout(resetTimer); resetArmed = false; $('reset').textContent = 'Reiniciar expedición';
- save.stamps = {}; gotAdobes.clear(); adobes.forEach(a => { a.got = false; a.g.classList.remove('got'); }); store.write();
- updateProgressUI(); closeAll(); p = target = 0; setArrived(-1); toast('Expedición reiniciada. ¡Buen viaje!');
-});
 document.querySelectorAll('[data-plan]').forEach(b => b.addEventListener('click', () => selectPlan(b.dataset.plan)));
 function selectPlan(k){ $('plan-text').textContent = plans[k]; document.querySelectorAll('[data-plan]').forEach(b => { const on = b.dataset.plan === k; b.classList.toggle('selected', on); b.setAttribute('aria-pressed', String(on)); }); }
 selectPlan('day');
@@ -757,7 +620,7 @@ async function runIntro(){
  camTween({x:(stops[0].x + stops[LAST].x)/2, y:(stops[0].y + stops[LAST].y)/2, z:overview * 1.25}, 4200, run);
  if (!(await typeCaption('Siete lugares de adobe. Cincuenta y cinco kilómetros de historia.', run))) return;
  if (!(await wait(1300, run))) return;
- if (!(await typeCaption('Tu misión: visitar cada parada y ganar sus sellos.', run))) return;
+ if (!(await typeCaption('Volá, descubrí cada lugar y prepará tu viaje real.', run))) return;
  if (!(await wait(700, run))) return;
  audio.whoosh();
  if (!(await camTween(playCam(), 2600, run))) return;
@@ -780,7 +643,6 @@ function startGame(withIntro){
  if (withIntro && !reduceMotion) runIntro(); else { p = target = 0; introCam = null; enterPlay(); }
 }
 $('start').addEventListener('click', () => startGame(true));
-$('continue-game').addEventListener('click', () => startGame(false));
 $('skip').addEventListener('click', skipIntro);
 
 let titleDrift = 0;
@@ -802,9 +664,7 @@ async function boot(){
   Promise.race([document.fonts?.ready ?? Promise.resolve(), new Promise(r => setTimeout(r, 2500))]).then(bump)
  ]);
  computeBase();
- buildMap(); buildPins(); buildAdobes(); buildItinerary(); buildClouds(); updateProgressUI();
- const n = stampCount();
- if (n || gotAdobes.size){ $('continue-game').hidden = false; $('continue-game').textContent = `Continuar · ${n}/7 sellos`; }
+ buildMap(); buildPins(); buildItinerary(); buildClouds();
  state = 'title'; document.body.className = 'state-title';
  titleCamLoop();
  requestAnimationFrame(frame);
