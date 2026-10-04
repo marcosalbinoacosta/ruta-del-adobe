@@ -1,26 +1,28 @@
-# ADOBE · Una expedición por Catamarca
+# Ruta del Adobe · Una expedición por Catamarca
 
-Experiencia web de exploración: avión guiado por scroll, cámara móvil, siete paradas, visitas con detalles interactivos, pasaporte con sellos guardados en el dispositivo, vuelo automático, sonido opcional y guía de viaje.
+Experiencia web informativa e interactiva sobre la Ruta del Adobe (departamento Tinogasta, Catamarca), basada en la presentación del proyecto. Un avión de papel recorre un mapa ilustrado de estilo scrapbook por siete lugares de adobe entre Tinogasta y Fiambalá.
 
-## Abrir
+Publicado en https://ruta-del-adobe.vercel.app
 
-Sitio publicado en Vercel. Para verlo localmente:
+## Qué incluye
 
-Desde esta carpeta ejecutar `python -m http.server 4173 --directory dist` y abrir http://127.0.0.1:4173/. También se puede servir la carpeta `dist` con cualquier servidor web estático.
+- Portada y una intro con estilo de película.
+- Mapa vintage ilustrado, generado en SVG: montañas, río Abaucán, RN 60, pueblos y pines con foto.
+- Vuelo guiado con cámara cinematográfica y un modo película que hace el recorrido automático.
+- Una página por cada lugar: historia, ubicación, detalle de la foto, consejos de visita y enlace a Google Maps.
+- Guía para el viaje real: ficha de información, opciones de itinerario, características del recorrido, una checklist y recomendaciones.
+- La sección "¿Por qué elegí este destino?" y la propuesta del proyecto.
+- Sonido ambiente opcional, generado en el navegador.
 
 ## Controles
 
-- Scroll o gesto vertical: avanzar/retroceder por la ruta.
-- Flechas del teclado o botones anterior/siguiente: elegir parada.
-- Botón de reproducción: vuelo automático; el scroll manual lo detiene.
-- Explorar este lugar: abrir la visita; el punto con + muestra un detalle.
-- Guardar sello: incorporar el lugar al pasaporte local.
-- Nota musical: activar/desactivar ambiente sonoro.
+- Scroll, arrastre o gesto: avanzar y retroceder por la ruta.
+- Flechas del teclado o botones ‹ ›: ir a la parada anterior o siguiente.
+- Barra espaciadora o ▶: modo película.
+- Enter: abrir el lugar en el que estás.
 
-El escenario ilustrado es interpretativo. Cada visita enlaza a la ubicación real en Google Maps. La guía conserva los datos del documento de referencia y enlaces a fuentes institucionales. No inventa horarios o tarifas.
+## Ver localmente
 
-## Verificación
+Desde esta carpeta, ejecutá `python -m http.server 4174 --directory dist` y abrí http://127.0.0.1:4174/.
 
-Se comprobó la sintaxis de JavaScript, la carga de la web, el avance mediante scroll, las visitas y detalles, el guardado de sellos, la llegada a Fiambalá y las vistas de escritorio y celular. El control WebMCP se verificó con una entrada válida y otra inválida. El navegador no reportó errores en esa revisión.
-
-El sitio completo y sus recursos están en `dist`.
+El mapa y el avión son recursos ilustrados: no son cartografía de navegación. El recorrido real se hace por tierra.
