@@ -456,6 +456,7 @@ function setArrived(i){
  $('card-place').textContent = `${s.town}, Catamarca`;
  $('card-title').textContent = i ? s.name : s.title;
  $('card-text').textContent = s.desc;
+ $('card-end').hidden = i !== LAST;
  $('visit').innerHTML = i === 0 ? 'Conocer Casa Grande <span aria-hidden="true">✦</span>' : 'Conocer el lugar <span aria-hidden="true">✦</span>';
  const card = $('stop-card'); card.classList.remove('show'); void card.offsetWidth; card.classList.add('show');
  if (i > 0) audio.chime();
@@ -478,7 +479,7 @@ function setFilm(on){
 function filmStep(){
  if (!film) return;
  const i = nextIndex();
- if (target >= .999){ setFilm(false); toast('Llegaste a Fiambalá: fin del recorrido. ¿Preparás tu viaje real?'); return; }
+ if (target >= .999){ setFilm(false); toast('Llegaste a Fiambalá: fin del recorrido. Llevate el mapa.'); return; }
  flyTo(i, () => {
   if (!film) return;
   const bar = $('film-bar'); bar.style.transition = 'none'; bar.style.width = '0'; void bar.offsetWidth;
@@ -577,7 +578,7 @@ document.querySelectorAll('#checklist input').forEach((inp, i) => {
 /* ---------- Llevate el mapa ---------- */
 { // Google Maps con todas las paradas: salida, paradas intermedias y llegada
  const q = encodeURIComponent;
- $('route-map').href = 'https://www.google.com/maps/dir/?api=1&travelmode=driving'
+ $('route-map').href = $('card-route').href = 'https://www.google.com/maps/dir/?api=1&travelmode=driving'
   + `&origin=${q(stops[0].query)}&destination=${q(stops[LAST].query)}`
   + `&waypoints=${q(stops.slice(1, LAST).map(s => s.query).join('|'))}`;
 }
@@ -590,8 +591,8 @@ async function mapFontCSS(text){
   return `@font-face{font-family:'Special Elite';src:url(${await toDataURL(await (await fetch(url)).blob())})}`;
  } catch { return ''; }
 }
-async function downloadMap(){
- const btn = $('map-download'); if (btn.disabled) return;
+async function downloadMap(btn){
+ if (btn.disabled) return;
  btn.disabled = true; const label = btn.textContent; btn.textContent = 'Preparando el mapa…';
  try {
   const svg = $('world').cloneNode(true);
@@ -623,10 +624,11 @@ async function downloadMap(){
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
   btn.textContent = 'Mapa descargado ✓';
  } catch { btn.textContent = 'No se pudo generar. Probá de nuevo.'; }
- // el aviso va en el botón: el toast queda detrás del diálogo abierto
+ // el aviso va en el botón: el toast quedaría detrás del diálogo abierto
  setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 2600);
 }
-$('map-download').addEventListener('click', downloadMap);
+$('map-download').addEventListener('click', () => downloadMap($('map-download')));
+$('card-download').addEventListener('click', () => downloadMap($('card-download')));
 
 let toastTimer = 0;
 function toast(msg){ clearTimeout(toastTimer); const t = $('toast'); t.textContent = msg; t.classList.add('show'); toastTimer = setTimeout(() => t.classList.remove('show'), 3600); }

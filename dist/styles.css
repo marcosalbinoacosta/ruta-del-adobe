@@ -144,6 +144,10 @@ body.state-play .stop-card.show{opacity:1;transform:none;pointer-events:auto}
 .note h2{font-family:var(--type);font-weight:400;font-size:26px;line-height:1.15;margin-bottom:8px}
 .note-text{font-size:14px;color:var(--ink-soft);margin-bottom:16px}
 .note .btn{width:100%;justify-content:space-between}
+.card-end{margin-top:14px;padding-top:12px;border-top:2px dashed #cdbfa3}
+.card-end-title{font-size:13px;color:var(--ochre-d);margin-bottom:8px}
+.card-end-btns{display:flex;gap:8px}
+.note .card-end .btn{flex:1;white-space:nowrap;width:auto;justify-content:center;min-height:40px;padding:8px 10px;font-size:13px}
 .film-progress{height:3px;background:#ddd2bb;margin-top:12px;display:none}
 .film-progress i{display:block;height:100%;width:0;background:var(--olive)}
 body.film .film-progress{display:block}
