@@ -310,6 +310,7 @@ dialog.shake{animation:screenshake .35s}
 .checklist label{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed #cdbfa3;cursor:pointer;font-size:15px}
 .checklist input{width:20px;height:20px;accent-color:var(--olive)}
 .checklist label:has(:checked){color:var(--olive-d);text-decoration:line-through}
+.map-notes{margin-top:14px;font-size:14px;color:var(--ink-soft)}
 .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin:16px 0;font-size:14px}
 .about-polaroid{float:right;width:210px;margin:6px 0 16px 24px;transform:rotate(4deg)}
 .about-polaroid figcaption{font-size:12px}

@@ -96,9 +96,9 @@
     <div class="note">
       <span class="tape tape-ochre" id="card-tag">PUNTO DE PARTIDA</span>
       <p class="note-place" id="card-place">Tinogasta, Catamarca</p>
-      <h2 id="card-title">El viaje empieza acá</h2>
-      <p class="note-text" id="card-text">Seguí la línea punteada hacia Fiambalá.</p>
-      <button class="btn btn-primary" id="visit">Despegar <span aria-hidden="true">→</span></button>
+      <h2 id="card-title">El viaje empieza en Casa Grande</h2>
+      <p class="note-text" id="card-text">La Ruta del Adobe arranca en Tinogasta, en la Casa Grande.</p>
+      <button class="btn btn-primary" id="visit">Conocer Casa Grande <span aria-hidden="true">✦</span></button>
       <div class="film-progress" aria-hidden="true"><i id="film-bar"></i></div>
     </div>
   </aside>
@@ -206,7 +206,7 @@
   <p class="lead">Del viaje virtual al camino real. Todo lo que necesitás para recorrer la Ruta del Adobe.</p>
   <ul class="info-cards">
     <li><span aria-hidden="true">📍</span><b>Ubicación</b>Departamento Tinogasta, provincia de Catamarca, Argentina.</li>
-    <li><span aria-hidden="true">🚩</span><b>Punto de inicio</b>Tinogasta.</li>
+    <li><span aria-hidden="true">🚩</span><b>Punto de inicio</b>Casa Grande, en Tinogasta.</li>
     <li><span aria-hidden="true">🏁</span><b>Punto de finalización</b>Fiambalá.</li>
     <li><span aria-hidden="true">📏</span><b>Recorrido</b>Aproximadamente 55 km, principalmente por la Ruta Nacional 60.</li>
     <li><span aria-hidden="true">⏱️</span><b>Duración estimada</b>Una jornada completa, según el tiempo de visita en cada lugar.</li>
@@ -233,6 +233,13 @@
     <label><input type="checkbox"> Estado del tiempo y de los caminos consultado</label>
     <label><input type="checkbox"> Combustible suficiente y celular cargado</label>
   </div>
+  <h3 class="tape tape-khaki">Dónde dormir</h3>
+  <ul class="info-cards">
+    <li><span aria-hidden="true">🏨</span><b>Casagrande Hotel de Adobe</b>La Casa Grande, punto de partida de la ruta, funciona como hotel en una casona de adobe restaurada.</li>
+    <li><span aria-hidden="true">📍</span><b>Dirección</b>Moreno 801, esquina Constitución, Tinogasta. A unas dos cuadras de la plaza principal.</li>
+    <li><span aria-hidden="true">🍽️</span><b>Servicios</b>Restaurante, bar, spa, pileta al aire libre, WiFi y estacionamiento.</li>
+  </ul>
+  <p class="small">También hay hosterías y alojamientos en Tinogasta y en Fiambalá, al final del recorrido. Consultá tarifas y disponibilidad antes de viajar.</p>
   <h3 class="tape tape-khaki">Cuidemos el patrimonio</h3>
   <ul class="dots">
     <li>Respetá las construcciones, iglesias y sitios arqueológicos.</li>
@@ -240,9 +247,17 @@
     <li>No dejes residuos.</li>
     <li>Pedí autorización antes de tomar fotografías en espacios religiosos.</li>
   </ul>
+  <h3 class="tape tape-khaki" id="take-map">Llevate el mapa</h3>
+  <p>Abrí el recorrido completo en Google Maps, con todas las paradas desde la Casa Grande hasta la Comandancia de Armas, o descargá el mapa ilustrado para guardarlo, compartirlo o imprimirlo.</p>
   <div class="page-actions">
-    <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Tinogasta,Catamarca,Argentina&amp;destination=Fiambala,Catamarca,Argentina&amp;travelmode=driving" target="_blank" rel="noopener">Abrir el recorrido en Google Maps ↗</a>
+    <a class="btn btn-primary" id="route-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Tinogasta,Catamarca,Argentina&amp;destination=Fiambala,Catamarca,Argentina&amp;travelmode=driving" target="_blank" rel="noopener">Abrir la ruta en Google Maps ↗</a>
+    <button class="btn btn-ghost" id="map-download">Descargar el mapa ilustrado ↓</button>
   </div>
+  <ul class="dots map-notes">
+    <li>En la zona puede haber poca señal: antes de salir, descargá el área en Google Maps para usarla sin conexión.</li>
+    <li>Si abrís la ruta desde el navegador del celular, Google Maps puede mostrar solo algunas paradas. En la app o en la computadora aparecen todas.</li>
+    <li>El mapa ilustrado es un recuerdo del viaje: no sirve para navegar.</li>
+  </ul>
   <div class="links">
     <a href="https://www.visittinogasta.tur.ar/turismo/rutas/ruta-del-adobe" target="_blank" rel="noopener">Turismo Tinogasta ↗</a>
     <a href="https://sites.google.com/view/turismofiambala" target="_blank" rel="noopener">Turismo Fiambalá ↗</a>

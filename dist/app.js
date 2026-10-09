@@ -16,7 +16,13 @@ const PTS = PTS0.map(([x,y]) => [x + OX, y + OY]);
 
 /* ---------- Contenido (basado en la presentación) ---------- */
 const stops = [
- {name:'Tinogasta', short:'Tinogasta', pt:0, image:'world', caption:'VALLE DE ABAUCÁN', tag:'PUNTO DE PARTIDA', town:'Tinogasta, Catamarca', title:'El viaje empieza acá', desc:'Seguí la línea punteada hacia Fiambalá. Siete lugares de adobe te esperan a lo largo de la Ruta Nacional 60.'},
+ {name:'Casa Grande', short:'Casa Grande', pt:0, image:'world', caption:'VALLE DE ABAUCÁN', tag:'PUNTO DE PARTIDA', town:'Tinogasta', title:'El viaje empieza en Casa Grande', icon:'house',
+  desc:'La Ruta del Adobe arranca en Tinogasta, en la Casa Grande: la primera casona restaurada del recorrido. Desde acá, siete lugares de adobe te esperan a lo largo de la Ruta Nacional 60.',
+  loc:'Tinogasta, Catamarca. Moreno 801, esquina Constitución, a unas dos cuadras de la plaza principal.',
+  story:'La Casa Grande es una antigua casona de adobe de la familia Orella. Fue el primer edificio restaurado de la Ruta del Adobe y por eso se la considera su punto de partida. Hoy funciona como Casagrande Hotel de Adobe: se puede dormir, almorzar o simplemente conocer la casona antes de salir hacia Fiambalá.',
+  detail:'Es el edificio que dio origen al circuito: su restauración marcó el inicio de la Ruta del Adobe.',
+  tip:'Funciona como hotel, con restaurante, bar, spa y pileta. Es una buena base para pasar la noche antes o después del recorrido. Consultá tarifas y disponibilidad antes de viajar.',
+  query:'Casagrande Hotel de Adobe Moreno 801 Tinogasta Catamarca'},
  {name:'Oratorio de los Orquera', short:'Orquera', pt:3, image:'orquera', town:'El Puesto', icon:'chapel',
   desc:'Bajo los árboles de El Puesto, una pequeña capilla conserva la memoria de una familia y de todo un pueblo.',
   loc:'El Puesto, departamento Tinogasta, Catamarca. Se encuentra dentro del recorrido de la Ruta del Adobe, sobre el corredor de la Ruta Nacional 60.',
@@ -69,9 +75,9 @@ const stops = [
 ];
 const LAST = stops.length - 1;
 const plans = {
- half:'Elegí menos paradas: por ejemplo, Oratorio de los Orquera, el conjunto de Anillaco y la Iglesia de San Pedro. Calculá al menos 4 a 5 horas para recorrer con calma.',
- day:'Mañana: salí de Tinogasta y visitá Orquera, Andacollo y el conjunto de Anillaco. Pausa para almorzar. Tarde: Batungasta y cierre en Fiambalá con San Pedro y la Comandancia de Armas. Confirmá todas las aperturas.',
- two:'Día 1: Tinogasta, Orquera, Andacollo y Anillaco, con tiempo para gastronomía regional y artesanías. Día 2: Batungasta, San Pedro y Comandancia, y otros atractivos de Fiambalá según disponibilidad.'
+ half:'Salí de la Casa Grande, en Tinogasta, y elegí menos paradas: por ejemplo, Oratorio de los Orquera, el conjunto de Anillaco y la Iglesia de San Pedro. Calculá al menos 4 a 5 horas para recorrer con calma.',
+ day:'Mañana: salí de la Casa Grande, en Tinogasta, y visitá Orquera, Andacollo y el conjunto de Anillaco. Pausa para almorzar. Tarde: Batungasta y cierre en Fiambalá con San Pedro y la Comandancia de Armas. Confirmá todas las aperturas.',
+ two:'Día 1: Casa Grande en Tinogasta, Orquera, Andacollo y Anillaco, con tiempo para gastronomía regional y artesanías. Día 2: Batungasta, San Pedro y Comandancia, y otros atractivos de Fiambalá según disponibilidad.'
 };
 const ICONS = {
  chapel:'M-16 16V-2h32V16M-18 -1 0-14 18-1M0-14v-9M-4-19h8M-4 16V6h8v10',
@@ -261,7 +267,7 @@ function buildPins(){
   const t = el('text',{x:0,y:26,'text-anchor':'middle'},lg); t.textContent = s.short.toUpperCase();
   pins.push(g);
  });
- pins.forEach((p, i) => p.addEventListener('click', () => { if (state !== 'play') return; if (arrived === i && i > 0) openPlace(i); else flyTo(i); }));
+ pins.forEach((p, i) => p.addEventListener('click', () => { if (state !== 'play') return; if (arrived === i) openPlace(i); else flyTo(i); }));
 }
 
 /* ---------- Sonido (sintetizado, sin archivos) ---------- */
@@ -447,10 +453,10 @@ function setArrived(i){
  $('card-photo').alt = i ? s.name : 'Ilustración del valle de Abaucán';
  $('card-caption').textContent = i ? s.short.toUpperCase() : s.caption;
  $('card-tag').textContent = i ? `PARADA ${String(i).padStart(2,'0')} / 07` : s.tag;
- $('card-place').textContent = i ? `${s.town}, Catamarca` : s.town;
+ $('card-place').textContent = `${s.town}, Catamarca`;
  $('card-title').textContent = i ? s.name : s.title;
  $('card-text').textContent = s.desc;
- $('visit').innerHTML = i === 0 ? 'Despegar <span aria-hidden="true">→</span>' : 'Conocer el lugar <span aria-hidden="true">✦</span>';
+ $('visit').innerHTML = i === 0 ? 'Conocer Casa Grande <span aria-hidden="true">✦</span>' : 'Conocer el lugar <span aria-hidden="true">✦</span>';
  const card = $('stop-card'); card.classList.remove('show'); void card.offsetWidth; card.classList.add('show');
  if (i > 0) audio.chime();
 }
@@ -483,12 +489,12 @@ function filmStep(){
 
 /* ---------- Página de parada ---------- */
 function openPlace(i){
- if (i < 1 || i > LAST) return;
+ if (i < 0 || i > LAST) return;
  setFilm(false);
  dialogIndex = i; const s = stops[i];
- $('place-image').src = `assets/${s.image}.webp`; $('place-image').alt = s.name;
- $('place-caption').textContent = s.short.toUpperCase();
- $('place-label').textContent = `PARADA ${String(i).padStart(2,'0')} / 07 · ${s.town.toUpperCase()}`;
+ $('place-image').src = `assets/${s.image}.webp`; $('place-image').alt = i ? s.name : 'Ilustración del valle de Abaucán';
+ $('place-caption').textContent = i ? s.short.toUpperCase() : s.caption;
+ $('place-label').textContent = `${i ? `PARADA ${String(i).padStart(2,'0')} / 07` : 'PUNTO DE PARTIDA'} · ${s.town.toUpperCase()}`;
  $('place-title').textContent = s.name;
  $('place-loc').textContent = s.loc;
  $('place-story').textContent = s.story;
@@ -496,7 +502,7 @@ function openPlace(i){
  $('place-tip').textContent = s.tip;
  $('hotspot-note').textContent = s.detail; $('hotspot-note').hidden = true; $('hotspot').setAttribute('aria-expanded','false');
  $('place-map').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.query)}`;
- $('continue').textContent = i < LAST ? `Seguir volando a ${stops[i+1].short} →` : 'Prepará tu viaje real →';
+ $('continue').textContent = i < LAST ? `Seguir volando a ${stops[i+1].short} →` : 'Llevate el mapa y prepará tu viaje →';
  openDialog('place-dialog');
 }
 /* ---------- Diálogos ---------- */
@@ -544,7 +550,7 @@ addEventListener('keydown', e => {
 });
 
 /* ---------- Botones ---------- */
-$('visit').addEventListener('click', () => { if (arrived === 0) flyTo(1); else if (arrived > 0) openPlace(arrived); });
+$('visit').addEventListener('click', () => { if (arrived >= 0) openPlace(arrived); });
 $('next').addEventListener('click', () => { setFilm(false); flyTo(nextIndex()); hideHint(); });
 $('previous').addEventListener('click', () => { setFilm(false); flyTo(prevIndex()); });
 $('play').addEventListener('click', () => { setFilm(!film); hideHint(); });
@@ -552,7 +558,7 @@ $('home').addEventListener('click', () => { setFilm(false); flyTo(0); });
 $('continue').addEventListener('click', () => {
  const i = dialogIndex; $('place-dialog').close();
  if (i < LAST) flyTo(i + 1);
- else openDialog('guide-dialog');
+ else { openDialog('guide-dialog'); $('take-map').scrollIntoView({block:'start'}); }
 });
 $('hotspot').addEventListener('click', () => { const show = $('hotspot-note').hidden; $('hotspot-note').hidden = !show; $('hotspot').setAttribute('aria-expanded', String(show)); });
 $('plan-open').addEventListener('click', () => openDialog('guide-dialog'));
@@ -567,6 +573,60 @@ document.querySelectorAll('#checklist input').forEach((inp, i) => {
  inp.checked = Array.isArray(save.checks) && save.checks.includes(i);
  inp.addEventListener('change', () => { save.checks = [...document.querySelectorAll('#checklist input')].flatMap((x, j) => x.checked ? [j] : []); store.write(); });
 });
+
+/* ---------- Llevate el mapa ---------- */
+{ // Google Maps con todas las paradas: salida, paradas intermedias y llegada
+ const q = encodeURIComponent;
+ $('route-map').href = 'https://www.google.com/maps/dir/?api=1&travelmode=driving'
+  + `&origin=${q(stops[0].query)}&destination=${q(stops[LAST].query)}`
+  + `&waypoints=${q(stops.slice(1, LAST).map(s => s.query).join('|'))}`;
+}
+const toDataURL = blob => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(blob); });
+async function mapFontCSS(text){
+ // tipografía del mapa incrustada, solo con los caracteres usados; si falla, queda la monoespaciada del sistema
+ try {
+  const css = await (await fetch(`https://fonts.googleapis.com/css2?family=Special+Elite&text=${encodeURIComponent(text)}`)).text();
+  const url = css.match(/url\(([^)]+)\)/)?.[1]; if (!url) return '';
+  return `@font-face{font-family:'Special Elite';src:url(${await toDataURL(await (await fetch(url)).blob())})}`;
+ } catch { return ''; }
+}
+async function downloadMap(){
+ const btn = $('map-download'); if (btn.disabled) return;
+ btn.disabled = true; const label = btn.textContent; btn.textContent = 'Preparando el mapa…';
+ try {
+  const svg = $('world').cloneNode(true);
+  svg.setAttribute('xmlns', NS);
+  svg.querySelectorAll('.active').forEach(e => e.classList.remove('active'));
+  svg.querySelector('#route-done').removeAttribute('style'); // ruta completa
+  for (const im of svg.querySelectorAll('image')) im.setAttribute('href', await toDataURL(await (await fetch(im.getAttribute('href'))).blob()));
+  const font = await mapFontCSS([...new Set($('world').textContent)].join(''));
+  const style = document.createElementNS(NS, 'style');
+  style.textContent = font + `
+   text{font-family:'Special Elite','Courier New',monospace}
+   .route-dash{fill:none;stroke:#2f2c28;stroke-width:4;stroke-dasharray:14 13;stroke-linecap:round;opacity:.75}
+   .route-done{fill:none;stroke:#c8701e;stroke-width:7;stroke-linecap:round}
+   .m-ink{fill:none;stroke:#5a4636;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+   .m-hatch{fill:none;stroke:#5a4636;stroke-width:1.3;opacity:.55;stroke-linecap:round}
+   .map-label{fill:#5a4a3c;letter-spacing:.35em}
+   .town-label{font-size:30px;fill:#2f2c28;letter-spacing:.12em;paint-order:stroke;stroke:#efe7d3;stroke-width:8px;stroke-linejoin:round}
+   .pin-ring{display:none}
+   .pin-label rect{fill:#8a9a55}
+   .pin-label text{font-size:22px;fill:#fff;letter-spacing:.06em}`;
+  svg.prepend(style);
+  const src = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)], {type:'image/svg+xml'}));
+  const img = new Image();
+  await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = src; });
+  const canvas = document.createElement('canvas'); canvas.width = W; canvas.height = H;
+  canvas.getContext('2d').drawImage(img, 0, 0, W, H); URL.revokeObjectURL(src);
+  const jpg = await new Promise(res => canvas.toBlob(res, 'image/jpeg', .9));
+  const a = document.createElement('a'); a.href = URL.createObjectURL(jpg); a.download = 'ruta-del-adobe-mapa.jpg';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  btn.textContent = 'Mapa descargado ✓';
+ } catch { btn.textContent = 'No se pudo generar. Probá de nuevo.'; }
+ // el aviso va en el botón: el toast queda detrás del diálogo abierto
+ setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 2600);
+}
+$('map-download').addEventListener('click', downloadMap);
 
 let toastTimer = 0;
 function toast(msg){ clearTimeout(toastTimer); const t = $('toast'); t.textContent = msg; t.classList.add('show'); toastTimer = setTimeout(() => t.classList.remove('show'), 3600); }
